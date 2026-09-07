@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+:root {
+  --paper: #f4efe4;
+  --paper-2: #fbf8f1;
+  --ink: #161410;
+  --muted: #5b5348;
+  --navy: #1b2a4a;
+  --navy-2: #0f1b33;
+  --gold: #9a7b32;
+  --gold-2: #c4a35a;
+  --rule: #d4c6a3;
+  --yes: #1f4d38;
+  --no: #7a2e24;
+  --focus: #1b2a4a;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-navy: var(--navy);
+  --color-navy-2: var(--navy-2);
+  --color-gold: var(--gold);
+  --color-gold-2: var(--gold-2);
+  --color-rule: var(--rule);
+  --color-yes: var(--yes);
+  --color-no: var(--no);
+  --font-sans: var(--font-lato);
+  --font-serif: var(--font-garamond);
+}
+
+html,
+body {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+body {
+  font-family: var(--font-lato), "Source Sans 3", sans-serif;
+  min-height: 100%;
+}
+
+h1,
+h2,
+h3,
+.serif {
+  font-family: var(--font-garamond), "Times New Roman", serif;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+.rule {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-2), transparent);
+}
+
+.live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #2f7a4f;
+  box-shadow: 0 0 0 0 rgba(47, 122, 79, 0.6);
+  animation: pulse 1.8s ease-out infinite;
+}
+
+@keyframes pulse {
+  70% {
+    box-shadow: 0 0 0 8px rgba(47, 122, 79, 0);
+  }
+}
+
+.paper-card {
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+}
+
+.ticker {
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}

@@ -1,0 +1,7 @@
+node_modules
+.next
+.git
+data/state.json
+data/state.json.tmp
+*.md
+!README.md
