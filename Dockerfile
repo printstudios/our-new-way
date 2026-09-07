@@ -3,7 +3,7 @@ FROM node:22-bookworm-slim
 WORKDIR /app
 
 RUN apt-get update \
-  && apt-get install -y --no-install-recommends python3 zip ca-certificates \
+  && apt-get install -y --no-install-recommends zip ca-certificates \
   && rm -rf /var/lib/apt/lists/*
 
 COPY package.json package-lock.json ./
@@ -12,8 +12,9 @@ RUN npm install --no-audit --no-fund
 COPY . .
 
 RUN mkdir -p data/laws \
-  && if [ -f data/laws.tar.gz ]; then tar -xzf data/laws.tar.gz -C data && rm -f data/laws.tar.gz; fi \
-  && python3 scripts/ingest_gesetze.py --workers 8
+  && tar -xzf data/laws.tar.gz -C data \
+  && rm -f data/laws.tar.gz \
+  && test -f data/laws/gg.json
 
 ENV NODE_ENV=production
 ENV PORT=8000
